@@ -1,12 +1,14 @@
-// HTML структура (можно добавить в index.html):
-// <div id="app">
-//     <h1>To-Do Rakendus</h1>
-//     <input id="taskInput" type="text" placeholder="Lisa uus ülesanne">
-//     <button onclick="addTask()">Lisa</button>
-//     <ul id="taskList"></ul>
-// </div>
+const express = require('express');
+const app = express();
+const PORT = 3000;
 
-// JavaScript:
+// Обслуживание статических файлов (например, index.html, style.css, app.js)
+app.use(express.static(__dirname));
+
+// Запуск сервера
+app.listen(PORT, () => {
+    console.log(`Сервер запущен на http://localhost:${3000}`);
+});
 
 // Функция для добавления новой задачи
 function addTask() {
@@ -64,48 +66,3 @@ function markAsDone(taskItem) {
     const buttons = taskItem.querySelectorAll('button');
     buttons.forEach(button => button.disabled = true);
 }
-
-// Стили CSS (можно добавить в style.css):
-/*
-#app {
-    font-family: Arial, sans-serif;
-    max-width: 400px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-#taskInput {
-    width: 80%;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-button:disabled {
-    cursor: not-allowed;
-    background-color: #ccc;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin-bottom: 5px;
-}
-
-.task-content {
-    flex-grow: 1;
-}
-*/
